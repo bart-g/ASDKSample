@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import AsyncDisplayKit
+
+class MainNode: ASDisplayNode {
+    
+    override func didLoad() {
+        super.didLoad()
+        
+        backgroundColor = .grayColor()
+    }
+}
