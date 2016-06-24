@@ -28,7 +28,10 @@ class MainNode: ASDisplayNode {
         firstNode.preferredFrameSize = CGSize(width: 50.0, height: 50.0)
         secondNode.preferredFrameSize = CGSize(width: 50.0, height: 50.0)
         
-        let mainSpec = ASStackLayoutSpec(direction: .Horizontal, spacing: 0.0, justifyContent: .Center, alignItems: .Center, children: [firstNode, secondNode])
+        let mainSpec = ASStackLayoutSpec(direction: .Horizontal, spacing: 0.0, justifyContent: .Center, alignItems: .Stretch, children: [firstNode, secondNode])
+        
+        firstNode.flexGrow = true
+        secondNode.flexGrow = true
         
         return mainSpec
     }
