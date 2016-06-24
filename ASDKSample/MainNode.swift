@@ -35,10 +35,9 @@ class MainNode: ASDisplayNode {
         
         let textSpec = ASStackLayoutSpec(direction: .Horizontal, spacing: 0.0, justifyContent: .Center, alignItems: .Center, children: [firstNode, thirdNode])
         
-        let mainSpec = ASStackLayoutSpec(direction: .Vertical, spacing: 0.0, justifyContent: .Center, alignItems: .Stretch, children: [textSpec, secondNode])
+        let insetsSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0.0, left: 10.0, bottom: 10.0, right: 10.0), child: secondNode)
         
-//        firstNode.flexGrow = true
-//        secondNode.flexGrow = true
+        let mainSpec = ASStackLayoutSpec(direction: .Vertical, spacing: 0.0, justifyContent: .Center, alignItems: .Stretch, children: [textSpec, insetsSpec])
         
         return mainSpec
     }
