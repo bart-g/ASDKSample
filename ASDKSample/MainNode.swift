@@ -13,25 +13,32 @@ class MainNode: ASDisplayNode {
     
     var firstNode: ASDisplayNode
     var secondNode: ASDisplayNode
+    var thirdNode: ASTextNode
     
     override init() {
         firstNode = ASDisplayNode()
         secondNode = ASDisplayNode()
+        thirdNode = ASTextNode()
         
         super.init()
         
+        thirdNode.attributedText = NSAttributedString(string: "monsunowicz@gmail.com", attributes: [NSFontAttributeName : UIFont.systemFontOfSize(14.0, weight: UIFontWeightMedium), NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+        
         addSubnode(firstNode)
         addSubnode(secondNode)
+        addSubnode(thirdNode)
     }
     
     override func layoutSpecThatFits(constrainedSize: ASSizeRange) -> ASLayoutSpec {
         firstNode.preferredFrameSize = CGSize(width: 50.0, height: 50.0)
         secondNode.preferredFrameSize = CGSize(width: 50.0, height: 50.0)
         
-        let mainSpec = ASStackLayoutSpec(direction: .Horizontal, spacing: 0.0, justifyContent: .Center, alignItems: .Stretch, children: [firstNode, secondNode])
+        let textSpec = ASStackLayoutSpec(direction: .Horizontal, spacing: 0.0, justifyContent: .Center, alignItems: .Center, children: [firstNode, thirdNode])
         
-        firstNode.flexGrow = true
-        secondNode.flexGrow = true
+        let mainSpec = ASStackLayoutSpec(direction: .Vertical, spacing: 0.0, justifyContent: .Center, alignItems: .Stretch, children: [textSpec, secondNode])
+        
+//        firstNode.flexGrow = true
+//        secondNode.flexGrow = true
         
         return mainSpec
     }
@@ -42,5 +49,6 @@ class MainNode: ASDisplayNode {
         backgroundColor = .whiteColor()
         firstNode.backgroundColor = .grayColor()
         secondNode.backgroundColor = .lightGrayColor()
+        thirdNode.backgroundColor = .darkGrayColor()
     }
 }
